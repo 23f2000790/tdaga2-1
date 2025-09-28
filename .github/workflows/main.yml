@@ -1,0 +1,16 @@
+name: My Assignment Action
+
+on:
+  push:
+    branches: [ "main" ] # <-- Important: Check this branch name!
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 23f2000790@ds.study.iitm.ac.in
+        run: echo "Hello, world! This step is named with my email."
+
+      - name: All done
+        run: echo "Action completed successfully."
