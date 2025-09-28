@@ -1,0 +1,40 @@
+name: CI with Dependency Caching
+
+on:
+  push:
+    branches: [ "main" ] # Or "master", depending on your repo's default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # The caching action itself
+      - name: Cache dependencies
+        id: cache-step # Give the step an ID to reference its outputs
+        uses: actions/cache@v4
+        with:
+          # The folder to cache
+          path: ~/.npm
+          # The key for this cache.
+          key: cache-c9c6912
+
+      # The specific step required by your assignment
+      - name: prime-cache-c9c6912
+        run: echo "The cache-hit output variable was: '${{ steps.cache-step.outputs.cache-hit }}'"
+
+      # If the cache was not found, install dependencies
+      - name: Install dependencies
+        if: steps.cache-step.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Run build (example)
+        run: echo "Build step runs here..."
