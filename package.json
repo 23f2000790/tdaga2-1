@@ -1,0 +1,8 @@
+{
+  "name": "caching-example",
+  "version": "1.0.0",
+  "description": "A simple package for GitHub Actions caching demo",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
