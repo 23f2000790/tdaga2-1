@@ -1,4 +1,4 @@
-name: CI with Dependency Caching
+name: prime-cache-c9c6912
 
 on:
   push:
